@@ -3,7 +3,7 @@ var SSH = require('simple-ssh');
 var ssh = new SSH({
     host: 'localhost',
     user: 'matt',
-    pass: 'qwer'
+    pass: 'my password'
 });
 
 function create_game_div(game, playing) {
@@ -27,9 +27,11 @@ function create_game_div(game, playing) {
     var button = document.createElement("button");
     button.className = "w3-btn w3-ripple w3-pink";
     button.innerHTML = "Shut off"
-    button.onclick = function() {
-        console.log("asdasdghfaskdjh");
-    }
+    button.setAttribute(
+        "onclick",
+        // "turnoff('" + game + "')"
+        "console.log('hi')"
+    );
 
     section.appendChild(h4);
     section.appendChild(p);
