@@ -1,31 +1,32 @@
-var SSH = require('simple-ssh');
+// var SSH = require('simple-ssh');
  
-var ssh = new SSH({
-    host: '192.168.1.213',
-    user: 'blue',
-    pass: 'chris'
-});
+// var ssh = new SSH({
+//     host: '192.168.1.213',
+//     user: 'blue',
+//     pass: 'chris'
+// });
 
 function create_game_div(game, playing) {
     var games = document.getElementById("games");
 
     var container = document.createElement("div");
-    container.class = "w3-container";
+    container.className = "w3-container w3-card-4 w3-margin-bottom";
 
     var section = document.createElement("div");
-    section.class = "w3-section";
+    section.className = "w3-section";
 
     var h4 = document.createElement("h4");
-    h4.class = "w3-text-theme";
+    h4.className = "w3-text-theme";
     h4.innerHTML = game;
 
     var p = document.createElement("h4");
-    p.class = "w3-text-theme";
+    p.className = "w3-text-theme";
     if (playing) p.innerHTML = "Status: Playing";
     if (!playing) p.innerHTML = "Status: Not Playing";
     
     var button = document.createElement("button");
-    button.class = "w3-btn w3-ripple w3-pink";
+    button.className = "w3-btn w3-ripple w3-pink";
+    button.innerHTML = "Shut off"
     button.onclick = "turnoff('" + game + "')";
 
     section.appendChild(h4);
