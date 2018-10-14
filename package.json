@@ -1,0 +1,19 @@
+{
+  "name": "remote-shutdown",
+  "version": "1.0.0",
+  "description": "Remotely shutdown games on my brother's computer.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xoreo/remote-shutdown.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xoreo/remote-shutdown/issues"
+  },
+  "homepage": "https://github.com/xoreo/remote-shutdown#readme"
+}
