@@ -1,11 +1,3 @@
-var SSH = require('simple-ssh');
- 
-var ssh = new SSH({
-    host: 'localhost',
-    user: 'matt',
-    pass: 'my password'
-});
-
 function create_game_div(game, playing) {
     var games = document.getElementById("games");
 

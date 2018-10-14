@@ -4,8 +4,7 @@
   "description": "Remotely shutdown games on my brother's computer.",
   "main": "src/js/index.js",
   "scripts": {
-    "test": "node src/js/index.js",
-    "start": "node node_modules\\http-server\\bin\\http-server"
+    "server": "node src/js/server.js"
   },
   "repository": {
     "type": "git",
@@ -18,6 +17,7 @@
   },
   "homepage": "https://github.com/xoreo/remote-shutdown#readme",
   "devDependencies": {
+    "express": "^4.16.4",
     "http-server": "^0.11.1",
     "simple-ssh": "^1.0.0"
   }
