@@ -1,10 +1,10 @@
-// var SSH = require('simple-ssh');
+var SSH = require('simple-ssh');
  
-// var ssh = new SSH({
-//     host: '192.168.1.213',
-//     user: 'blue',
-//     pass: 'chris'
-// });
+var ssh = new SSH({
+    host: 'localhost',
+    user: 'matt',
+    pass: 'qwer'
+});
 
 function create_game_div(game, playing) {
     var games = document.getElementById("games");
@@ -27,7 +27,9 @@ function create_game_div(game, playing) {
     var button = document.createElement("button");
     button.className = "w3-btn w3-ripple w3-pink";
     button.innerHTML = "Shut off"
-    button.onclick = "turnoff('" + game + "')";
+    button.onclick = function() {
+        console.log("asdasdghfaskdjh");
+    }
 
     section.appendChild(h4);
     section.appendChild(p);
@@ -74,7 +76,7 @@ function turnoff(game) {
         new_modal("All Games have been closed successfully.");
     }
 
-    if (game == "Discord") kill("discord.exe", "Discord", true);
+    if (game == "Discord") kill("notepad.exe", "Discord", true);
     if (game == "Rainbow Six") kill("RainbowSix.exe", "Rainbow Six", true);
 
     if (game == "Fortnite") console.log("Can't close fortnite right now.");
