@@ -6,15 +6,7 @@ var ssh = new SSH({
     pass: 'chris'
 });
  
-ssh.exec('echo $PATH', {
-    out: function(stdout) {
-        console.log(stdout);
-    }
-}).start();
- 
-/*** Using the `args` options instead ***/
-ssh.exec('echo', {
-    args: ['$PATH'],
+ssh.exec('taskkill /IM notepad.exe /F', {
     out: function(stdout) {
         console.log(stdout);
     }

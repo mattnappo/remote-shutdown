@@ -4,7 +4,7 @@
   "description": "Remotely shutdown games on my brother's computer.",
   "main": "src/js/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node src/js/index.js"
   },
   "repository": {
     "type": "git",
