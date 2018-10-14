@@ -55,13 +55,3 @@ input:checked+.slider:before {
 	border-radius: 50%;
 }
 
-.center-parent {
-    position: relative;
-}
-
-.center-child {
-    position: absolute;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
