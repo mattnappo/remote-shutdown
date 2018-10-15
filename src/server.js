@@ -22,8 +22,9 @@ var ssh = new SSH({
 });
 
 function kill(process, game, show_close) {
+    console.log("killing: " + process + "@" + game);
     // ssh.exec('taskkill /IM ' + process + ' /F', {
-    ssh.exec("ls -la", {
+        ssh.exec("ls -la", {
         out: function(stdout) {
             console.log(stdout)
         }
@@ -32,6 +33,7 @@ function kill(process, game, show_close) {
         // new_modal(game + " has been closed successfully.");
     }
 }
+
 const games = {
     "Discord": "discord.exe",
     "Rainbow Six": "RainbowSix.exe",
@@ -43,13 +45,13 @@ const games = {
 
 function turnoff(game) {
     console.log(game);
-    if (game == "all") {
+    if (game == "All Games") {
         var len = Object.keys(games).length;
         for (var m_game in games) {
-            kill(games[m_game], false);
+            kill(games[m_game], game, false);
         }
         // new_modal("All Games have been closed successfully.");
     } else {
-        kill(games[game], false);
+        kill(games[game], game, false);
     }
 }
