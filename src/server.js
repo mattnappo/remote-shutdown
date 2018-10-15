@@ -2,7 +2,9 @@ const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
 const SSH = require("simple-ssh");
-const server = require("./server.json");
+
+const server = require("./data/server.json");
+const games = require("./data/games.json");
 
 var app = express();
 app.use(express.static(__dirname + "/static"));
@@ -12,8 +14,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.post("/close", function (req, res, next) {
     turnoff(req.body.game);
 });
-
-app.listen(3000);
 
 var ssh = new SSH({
     host: server.host,
@@ -25,6 +25,7 @@ function is_running() {
     // Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
     // to enable the linux subsystem, run on chris' pc
 }
+
 function kill(process, game, show_close) {
     console.log("killing: " + process + "@" + game);
     // ssh.exec('taskkill /IM ' + process + ' /F', {
@@ -34,8 +35,6 @@ function kill(process, game, show_close) {
         }
     }).start();
 }
-
-const games = require("data/games.json")
 
 function turnoff(game) {
     console.log(game);
@@ -48,3 +47,5 @@ function turnoff(game) {
         kill(games[game], game, false);
     }
 }
+
+app.listen(3000);

@@ -84,8 +84,4 @@ $(document).on("click", ".closer", function () {
     });
 });
 
-function new_modal(text) {
-    document.getElementById()
-}
-
 init();
