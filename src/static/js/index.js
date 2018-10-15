@@ -44,8 +44,8 @@ function create_game_div(game, playing, all = false) {
 
     var p = document.createElement("h4");
     p.className = "w3-text-theme";
-    if (playing && !all) p.innerHTML = "Status: Playing";
-    if (!playing && !all) p.innerHTML = "Status: Not Playing";
+    // if (playing && !all) p.innerHTML = "Status: Playing";
+    // if (!playing && !all) p.innerHTML = "Status: Not Playing";
     
     var button = document.createElement("button");
     button.className = "w3-btn w3-ripple w3-pink closer";
