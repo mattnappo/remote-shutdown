@@ -1,7 +1,8 @@
 const express = require("express");
 const path = require("path");
-const bodyParser = require('body-parser');
+const bodyParser = require("body-parser");
 const SSH = require("simple-ssh");
+const server = require("./server.json");
 
 var app = express();
 app.use(express.static(__dirname + "/static"));
@@ -15,16 +16,16 @@ app.post("/close", function (req, res, next) {
 app.listen(3000);
 
 var ssh = new SSH({
-    host: "localhost",
-    user: "matt",
-    pass: "my password"
+    host: server.host,
+    user: server.user,
+    pass: server.pass
 });
 
 function kill(process, game, show_close) {
-    ssh.exec('taskkill /IM ' + process + ' /F', {
+    // ssh.exec('taskkill /IM ' + process + ' /F', {
+    ssh.exec("ls -la", {
         out: function(stdout) {
-            console.log("KILLED " + game);
-            console.log(stdout);
+            console.log(stdout)
         }
     }).start();
     if (show_close) {
