@@ -21,27 +21,21 @@ var ssh = new SSH({
     pass: server.pass
 });
 
+function is_running() {
+    // Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
+    // to enable the linux subsystem, run on chris' pc
+}
 function kill(process, game, show_close) {
     console.log("killing: " + process + "@" + game);
     // ssh.exec('taskkill /IM ' + process + ' /F', {
-        ssh.exec("ls -la", {
+    ssh.exec("ls -la", {
         out: function(stdout) {
             console.log(stdout)
         }
     }).start();
-    if (show_close) {
-        // new_modal(game + " has been closed successfully.");
-    }
 }
 
-const games = {
-    "Discord": "discord.exe",
-    "Rainbow Six": "RainbowSix.exe",
-    "Fortnite": "something",
-    "Battlefield 1": "bf1.exe",
-    "PUBG": "TslGame.exe",
-    "CSGO": "csgo.exe"
-};
+const games = require("data/games.json")
 
 function turnoff(game) {
     console.log(game);
@@ -50,7 +44,6 @@ function turnoff(game) {
         for (var m_game in games) {
             kill(games[m_game], game, false);
         }
-        // new_modal("All Games have been closed successfully.");
     } else {
         kill(games[game], game, false);
     }
