@@ -1,3 +1,17 @@
+function create_modal(game) {
+    var modal = document.createElement
+        <div id="-modal" class="w3-modal">
+            <div class="w3-modal-content">
+                <div class="w3-container">
+                    <span onclick="document.getElementById('id01').style.display='none'" 
+                    class="w3-button w3-display-topright">&times;</span>
+                    <p>Some text in the Modal..</p>
+                    <p>Some text in the Modal..</p>
+                </div>
+            </div>
+        </div>
+}
+
 function create_game_div(game, playing, all = false) {
     var games = document.getElementById("games");
 
@@ -21,6 +35,7 @@ function create_game_div(game, playing, all = false) {
     button.id = game;
     button.innerHTML = "Turn off"
     button.onclick = function () {
+        document.getElementById(game + "-modal").style.display = "block";
         console.log("clicked " + game);
     }
 
@@ -30,6 +45,7 @@ function create_game_div(game, playing, all = false) {
 
     container.append(section);
     games.appendChild(container);
+    create_modal(game);
 
 }
 
