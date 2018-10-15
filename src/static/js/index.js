@@ -1,7 +1,9 @@
-function create_modal(game) {
+function create_modal(id, game) {
+    var modals = document.getElementById("modals");
+
     var modal = document.createElement("div");
     modal.className = "w3-modal";
-    modal.id = game + "-modal";
+    modal.id = id;
 
     var modal_content = document.createElement("div");
     modal_content.className = "w3-modal-content";
@@ -11,7 +13,7 @@ function create_modal(game) {
 
     var span = document.createElement("span");
     span.onclick = function () {
-        document.getElementById(game + "-modal").style.display = "none";
+        document.getElementById(id).style.display = "none";
     };
     span.className = "w3-button w3-display-topright";
     span.innerHTML = "&times;";
@@ -23,9 +25,11 @@ function create_modal(game) {
     container.appendChild(p);
     modal_content.appendChild(container);
     modal.appendChild(modal_content);
+    modals.appendChild(modal);
 }
 
 function create_game_div(game, playing, all = false) {
+    var id = game.replace(/\s+/g, '-').toLowerCase() + "-modal";
     var games = document.getElementById("games");
 
     var container = document.createElement("div");
@@ -48,17 +52,18 @@ function create_game_div(game, playing, all = false) {
     button.id = game;
     button.innerHTML = "Turn off"
     button.onclick = function () {
-        document.getElementById(game + "-modal").style.display = "block";
+        document.getElementById(id).style.display = "block";
         console.log("clicked " + game);
     }
-
+    
     section.appendChild(h4);
     section.appendChild(p);
     section.appendChild(button);
-
+    
     container.append(section);
     games.appendChild(container);
-    create_modal(game);
+    
+    create_modal(id, game);
 }
 
 var game_count;
