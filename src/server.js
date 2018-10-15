@@ -1,13 +1,15 @@
 const express = require("express");
-const SSH = require("simple-ssh");
 const path = require("path");
+const bodyParser = require('body-parser');
+const SSH = require("simple-ssh");
 
 var app = express();
 app.use(express.static(__dirname + "/static"));
 
-console.log(__dirname)
-app.get("/go", function (req, res) {
-    // res.sendFile(path.resolve("src/static/index.html"));
+app.post("/", function (req, res, next) {
+    var r = JSON.parse(req);
+    console.log("body: " + r);
+    console.log("data: " + r.data);
 });
 
 app.listen(3000);

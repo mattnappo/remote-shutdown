@@ -21,7 +21,8 @@ function create_game_div(game, playing) {
     button.id = game;
     button.innerHTML = "Shut off"
     button.onclick = function () {
-        turnoff(game);
+        console.log("cliked somehting")
+        // turnoff(game);
     }
 
     section.appendChild(h4);
@@ -31,22 +32,6 @@ function create_game_div(game, playing) {
     container.append(section);
     games.appendChild(container);
 
-}
-
-function set_buttons() {
-    $(document).on("click", ".closer", function () {
-        var clickedBtnID = $(this).attr('id');
-        alert('you clicked on button #' + clickedBtnID);
-    });
-
-    // for (var i = 0; i < game_count; i++) {
-
-    //     $("button").click(function () {
-    //         $.post("/close", {data: "blah"}, function (data) {
-    //             console.log(data);
-    //         });
-    //     }, 'json');
-    // }
 }
 
 var game_count;
@@ -61,41 +46,49 @@ function init() {
     set_buttons();    
 }
 
+$(document).on("click", ".closer", function () {
+    var clicked_game = $(this).attr("id");
+    $.post("/", {data: clicked_game}, function (data) {
+        alert(data);
+        console.log("clicked_game: " + data);
+    });
+});
+
 function new_modal(text) {
     document.getElementById()
 }
 
-function kill(process, game, show_close) {
-    ssh.exec('taskkill /IM ' + process + ' /F', {
-        out: function(stdout) {
-            console.log(stdout);
-        }
-    }).start();
-    document.getElementById();
-    if (show_close) {
-        new_modal(game + " has been closed successfully.");
-    }
-}
+// function kill(process, game, show_close) {
+//     ssh.exec('taskkill /IM ' + process + ' /F', {
+//         out: function(stdout) {
+//             console.log(stdout);
+//         }
+//     }).start();
+//     document.getElementById();
+//     if (show_close) {
+//         new_modal(game + " has been closed successfully.");
+//     }
+// }
 
-function turnoff(game) {
-    console.log(game);
-    if (game == "all") {
-        kill("RainbowSix.exe", true);
-        console.log("Can't close fortnite right now.");
-        kill("bf1.exe", true);
-        kill("TslGame.exe", true);
-        kill("csgo.exe", true);
-        new_modal("All Games have been closed successfully.");
-    }
+// function turnoff(game) {
+//     console.log(game);
+//     if (game == "all") {
+//         kill("RainbowSix.exe", true);
+//         console.log("Can't close fortnite right now.");
+//         kill("bf1.exe", true);
+//         kill("TslGame.exe", true);
+//         kill("csgo.exe", true);
+//         new_modal("All Games have been closed successfully.");
+//     }
 
-    if (game == "Discord") kill("notepad.exe", "Discord", true);
-    if (game == "Rainbow Six") kill("RainbowSix.exe", "Rainbow Six", true);
+//     if (game == "Discord") kill("notepad.exe", "Discord", true);
+//     if (game == "Rainbow Six") kill("RainbowSix.exe", "Rainbow Six", true);
 
-    if (game == "Fortnite") console.log("Can't close fortnite right now.");
+//     if (game == "Fortnite") console.log("Can't close fortnite right now.");
     
-    if (game == "Battlefield 1") kill("bf1.exe", "Battlefield 1", true);
-    if (game == "PUBG") kill("TslGame.exe", "PUBG", true);
-    if (game == "CSGO") kill("csgo.exe", "Counter Strike: Global Offensive", true);
-}
+//     if (game == "Battlefield 1") kill("bf1.exe", "Battlefield 1", true);
+//     if (game == "PUBG") kill("TslGame.exe", "PUBG", true);
+//     if (game == "CSGO") kill("csgo.exe", "Counter Strike: Global Offensive", true);
+// }
 
 init();

@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/xoreo/remote-shutdown#readme",
   "devDependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "http-server": "^0.11.1",
     "simple-ssh": "^1.0.0"
