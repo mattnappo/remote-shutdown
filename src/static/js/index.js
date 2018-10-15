@@ -1,4 +1,4 @@
-function create_game_div(game, playing) {
+function create_game_div(game, playing, all = false) {
     var games = document.getElementById("games");
 
     var container = document.createElement("div");
@@ -13,13 +13,13 @@ function create_game_div(game, playing) {
 
     var p = document.createElement("h4");
     p.className = "w3-text-theme";
-    if (playing) p.innerHTML = "Status: Playing";
-    if (!playing) p.innerHTML = "Status: Not Playing";
+    if (playing && !all) p.innerHTML = "Status: Playing";
+    if (!playing && !all) p.innerHTML = "Status: Not Playing";
     
     var button = document.createElement("button");
     button.className = "w3-btn w3-ripple w3-pink closer";
     button.id = game;
-    button.innerHTML = "Shut off"
+    button.innerHTML = "Turn off"
     button.onclick = function () {
         console.log("clicked " + game);
     }
@@ -35,7 +35,7 @@ function create_game_div(game, playing) {
 
 var game_count;
 function init() {
-    game_count = 6;
+    create_game_div("All Games", false, true);
     create_game_div("Discord", false);
     create_game_div("Rainbow Six", false);
     create_game_div("Fortnite"), false;

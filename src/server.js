@@ -32,24 +32,24 @@ function kill(process, game, show_close) {
         // new_modal(game + " has been closed successfully.");
     }
 }
+const games = {
+    "Discord": "discord.exe",
+    "Rainbow Six": "RainbowSix.exe",
+    "Fortnite": "something",
+    "Battlefield 1": "bf1.exe",
+    "PUBG": "TslGame.exe",
+    "CSGO": "csgo.exe"
+};
 
 function turnoff(game) {
     console.log(game);
     if (game == "all") {
-        kill("RainbowSix.exe", true);
-        console.log("Can't close fortnite right now.");
-        kill("bf1.exe", true);
-        kill("TslGame.exe", true);
-        kill("csgo.exe", true);
-        new_modal("All Games have been closed successfully.");
+        var len = Object.keys(games).length;
+        for (var m_game in games) {
+            kill(games[m_game], false);
+        }
+        // new_modal("All Games have been closed successfully.");
+    } else {
+        kill(games[game], false);
     }
-
-    if (game == "Discord") kill("notepad.exe", "Discord", true);
-    if (game == "Rainbow Six") kill("RainbowSix.exe", "Rainbow Six", true);
-
-    if (game == "Fortnite") console.log("Can't close fortnite right now.");
-    
-    if (game == "Battlefield 1") kill("bf1.exe", "Battlefield 1", true);
-    if (game == "PUBG") kill("TslGame.exe", "PUBG", true);
-    if (game == "CSGO") kill("csgo.exe", "Counter Strike: Global Offensive", true);
 }
