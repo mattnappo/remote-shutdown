@@ -1,15 +1,28 @@
 function create_modal(game) {
-    var modal = document.createElement
-        <div id="-modal" class="w3-modal">
-            <div class="w3-modal-content">
-                <div class="w3-container">
-                    <span onclick="document.getElementById('id01').style.display='none'" 
-                    class="w3-button w3-display-topright">&times;</span>
-                    <p>Some text in the Modal..</p>
-                    <p>Some text in the Modal..</p>
-                </div>
-            </div>
-        </div>
+    var modal = document.createElement("div");
+    modal.className = "w3-modal";
+    modal.id = game + "-modal";
+
+    var modal_content = document.createElement("div");
+    modal_content.className = "w3-modal-content";
+
+    var container = document.createElement("div");
+    container.className = "w3-container";
+
+    var span = document.createElement("span");
+    span.onclick = function () {
+        document.getElementById(game + "-modal").style.display = "none";
+    };
+    span.className = "w3-button w3-display-topright";
+    span.innerHTML = "&times;";
+
+    var p = document.createElement("p");
+    p.innerHTML = game + " was turned off on Chris' computer successfully."
+
+    container.appendChild(span);
+    container.appendChild(p);
+    modal_content.appendChild(container);
+    modal.appendChild(modal_content);
 }
 
 function create_game_div(game, playing, all = false) {
@@ -46,7 +59,6 @@ function create_game_div(game, playing, all = false) {
     container.append(section);
     games.appendChild(container);
     create_modal(game);
-
 }
 
 var game_count;
