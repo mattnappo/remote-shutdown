@@ -5,11 +5,13 @@ const SSH = require("simple-ssh");
 
 var app = express();
 app.use(express.static(__dirname + "/static"));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-app.post("/", function (req, res, next) {
-    var r = JSON.parse(req);
-    console.log("body: " + r);
-    console.log("data: " + r.data);
+app.post("/close", function (req, res, next) {
+    // var r = JSON.parse(req);
+    console.log("req: " + req);
+    console.log("game: " + req.body.game);
 });
 
 app.listen(3000);

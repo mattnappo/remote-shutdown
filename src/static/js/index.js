@@ -21,8 +21,7 @@ function create_game_div(game, playing) {
     button.id = game;
     button.innerHTML = "Shut off"
     button.onclick = function () {
-        console.log("cliked somehting")
-        // turnoff(game);
+        console.log("clicked something");
     }
 
     section.appendChild(h4);
@@ -43,14 +42,12 @@ function init() {
     create_game_div("Battlefield 1", false);
     create_game_div("PUBG", false);
     create_game_div("CSGO", false);
-    set_buttons();    
 }
 
 $(document).on("click", ".closer", function () {
     var clicked_game = $(this).attr("id");
-    $.post("/", {data: clicked_game}, function (data) {
-        alert(data);
-        console.log("clicked_game: " + data);
+    $.post("/close", {game: clicked_game}, function (game) {
+        alert(game);
     });
 });
 
