@@ -17,13 +17,12 @@ function create_game_div(game, playing) {
     if (!playing) p.innerHTML = "Status: Not Playing";
     
     var button = document.createElement("button");
-    button.className = "w3-btn w3-ripple w3-pink";
+    button.className = "w3-btn w3-ripple w3-pink closer";
+    button.id = game;
     button.innerHTML = "Shut off"
-    button.setAttribute(
-        "onclick",
-        // "turnoff('" + game + "')"
-        "console.log('hi')"
-    );
+    button.onclick = function () {
+        turnoff(game);
+    }
 
     section.appendChild(h4);
     section.appendChild(p);
@@ -34,14 +33,32 @@ function create_game_div(game, playing) {
 
 }
 
+function set_buttons() {
+    $(document).on("click", ".closer", function () {
+        var clickedBtnID = $(this).attr('id');
+        alert('you clicked on button #' + clickedBtnID);
+    });
+
+    // for (var i = 0; i < game_count; i++) {
+
+    //     $("button").click(function () {
+    //         $.post("/close", {data: "blah"}, function (data) {
+    //             console.log(data);
+    //         });
+    //     }, 'json');
+    // }
+}
+
+var game_count;
 function init() {
+    game_count = 6;
     create_game_div("Discord", false);
     create_game_div("Rainbow Six", false);
     create_game_div("Fortnite"), false;
     create_game_div("Battlefield 1", false);
     create_game_div("PUBG", false);
     create_game_div("CSGO", false);
-    
+    set_buttons();    
 }
 
 function new_modal(text) {
@@ -61,6 +78,7 @@ function kill(process, game, show_close) {
 }
 
 function turnoff(game) {
+    console.log(game);
     if (game == "all") {
         kill("RainbowSix.exe", true);
         console.log("Can't close fortnite right now.");

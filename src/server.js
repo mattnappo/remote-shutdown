@@ -6,8 +6,8 @@ var app = express();
 app.use(express.static(__dirname + "/static"));
 
 console.log(__dirname)
-app.get("/", function (req, res) {
-    res.sendFile(path.resolve("src/static/index.html"));
+app.get("/go", function (req, res) {
+    // res.sendFile(path.resolve("src/static/index.html"));
 });
 
 app.listen(3000);
