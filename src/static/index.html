@@ -9,7 +9,7 @@
     <body class="center-parent">
         <div class="w3-center w3-margin-bottom"><br>
             <h1 class="w3-text-theme">Video Game Remote Shutdown</h1>
-            <button class="w3-button w3-theme">Send a popup</button>
+            <button class="w3-button w3-theme" onclick="show_modal('new-message');">Send a popup</button>
         </div>
 
         <div class="w3-modal-content" style="max-width:600px">
@@ -23,28 +23,42 @@
 
         <div id="modals">
             <div class="w3-modal" id="new-message">
-                <div class="w3-modal-content">
+                <div class="w3-modal-content" style="width: 40%;">
                     <div class="w3-container">
-                        <span onclick="new_message_modal();"></span>
+                        <span class="w3-button w3-display-topright" onclick="hide_modal('new-message');">
+                            &times;
+                        </span>
 
-        var span = document.createElement("span");
-        span.onclick = function () {
-            document.getElementById(id).style.display = "none";
-        };
-        span.className = "w3-button w3-display-topright";
-        span.innerHTML = "&times;";
+                        <form class="w3-form">
+                            <div class="w3-container">
+                                <div class="w3-centered  w3-padding-16">
+                                    <input class="w3-input w3-margin-top" placeholder="Message" />
+                                    <button class="w3-button w3-theme w3-margin-top" onclick="new_message();">Send</button>
+                                </form>
+                            </div>
+                        </form>
 
-        var p = document.createElement("p");
-        p.innerHTML = game + " was turned off on Chris' computer successfully."
+                    </div>
+                </div>
+            </div>
 
-        container.appendChild(span);
-        container.appendChild(p);
-        modal_content.appendChild(container);
-        modal.appendChild(modal_content);
-        modals.appendChild(modal);
+            <div class="w3-modal" id="sent">
+                <div class="w3-modal-content" style="width: 40%;">
+                    <div class="w3-container">
+                        <span class="w3-button w3-display-topright" onclick="hide_modal('sent');">
+                            &times;
+                        </span>
+
+                        <p>Sent!</p>
+
+                    </div>
+                </div>
+            </div>
+
         </div>
 
     </body>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="js/index.js"></script>
+    <script src="js/helpers.js"></script>
 </html>
