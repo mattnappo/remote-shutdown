@@ -1,3 +1,7 @@
+function new_message_modal() {
+    document.getElementById('new-message').style.display='none';
+}
+
 function create_modal(id, game) {
     var modals = document.getElementById("modals");
 
